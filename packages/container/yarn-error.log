@@ -1,0 +1,54 @@
+Arguments: 
+  /home/jcvaldes/.nvm/versions/node/v18.18.2/bin/node /home/jcvaldes/.nvm/versions/node/v18.18.2/bin/yarn
+
+PATH: 
+  /home/jcvaldes/anaconda3/bin:/home/jcvaldes/.nvm/versions/node/v18.18.2/bin:/home/jcvaldes/bin:/usr/local/bin:/home/jcvaldes/.tfenv/bin:/home/jcvaldes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/jcvaldes/.dotnet/tools:/home/jcvaldes/.local/share/JetBrains/Toolbox/scripts:/usr/local/go/bin:/home/jcvaldes/tf_install:/.local/bin/kubectl:/home/jcvaldes/bin:/usr/lib/jvm/jdk-17/bin:/home/jcvaldes/android-studio/bin:/home/jcvaldes/bin:/usr/lib/jvm/jdk-17/bin:/usr/local/go/bin:/home/jcvaldes/.pulumi/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.18.2
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, open '/home/jcvaldes/.cache/yarn/v6/npm-@material-ui-icons-4.11.3-b0693709f9b161ce9ccde276a770d968484ecff1-integrity/node_modules/@material-ui/icons/.yarn-tarball.tgz'
+
+npm manifest: 
+  {
+    "name": "container",
+    "version": "1.0.0",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+      "@material-ui/core": "^4.11.0",
+      "@material-ui/icons": "^4.9.1",
+      "react": "^17.0.1",
+      "react-dom": "^17.0.1",
+      "react-router-dom": "^5.2.0"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.12.3",
+      "@babel/plugin-transform-runtime": "^7.12.1",
+      "@babel/preset-env": "^7.12.1",
+      "@babel/preset-react": "^7.12.1",
+      "babel-loader": "^8.1.0",
+      "clean-webpack-plugin": "^3.0.0",
+      "css-loader": "^5.0.0",
+      "html-webpack-plugin": "^4.5.0",
+      "style-loader": "^2.0.0",
+      "webpack": "^5.88.0",
+      "webpack-cli": "^4.1.0",
+      "webpack-dev-server": "^3.11.0",
+      "webpack-merge": "^5.2.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
