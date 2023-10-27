@@ -4,7 +4,8 @@ import { createMemoryHistory, createBrowserHistory } from 'history'
 import App from './App'
 
 // Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
+  debugger
   // default history solo para correrlo en isolation
   const history =
     defaultHistory ||
@@ -17,7 +18,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
     history.listen(onNavigate)
   }
 
-  ReactDOM.render(<App history={history} />, el)
+  ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el)
 
   // poner solo si quiero que el padre actualice la url del router
   return {
@@ -33,7 +34,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 }
 // if we are in development mode and in isolation call mount inmediately
 if (process.env.NODE_ENV === 'development') {
-  const devRoot = document.querySelector('#_marketing-dev-root')
+  const devRoot = document.querySelector('#_auth-dev-root')
   // Assuming our container doesn't have an element with id 'dev-products'
   if (devRoot) {
     // We are probably running in isolation
