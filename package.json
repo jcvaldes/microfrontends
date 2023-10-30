@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "vue-loader": "^15.11.1"
+  }
+}
