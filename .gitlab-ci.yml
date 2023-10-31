@@ -24,3 +24,20 @@ build-container-job:
       --region us-east-1
   rules:
     - if: $CI_COMMIT_REF_NAME == "container-master"
+
+build-auth-job:
+  stage: build
+  script:
+    - apt-get update -qy
+    - apt-get install -y nodejs npm awscli
+    - cd $DEFAULT_WORKING_DIRECTORY/auth
+    - npm install
+    - npm run build
+    - aws s3 sync dist s3://${AWS_S3_BUCKET_NAME}/auth/latest
+      --region us-east-1
+    - aws cloudfront create-invalidation
+      --distribution-id $AWS_DISTRIBUTION_ID
+      --paths "/auth/latest/index.html"
+      --region us-east-1
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "auth-master"
