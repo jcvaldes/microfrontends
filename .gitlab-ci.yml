@@ -6,14 +6,14 @@ variables:
   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID # Define esta variable en tu proyecto GitLab
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY # Define esta variable en tu proyecto GitLab
   AWS_DISTRIBUTION_ID: $AWS_DISTRIBUTION_ID # Define esta variable en tu proyecto GitLab
-  DEFAULT_WORKING_DIRECTORY: 'packages/container'
+  DEFAULT_WORKING_DIRECTORY: 'packages'
 
-build-job:
+build-container-job:
   stage: build
   script:
     - apt-get update -qy
     - apt-get install -y nodejs npm awscli
-    - cd $DEFAULT_WORKING_DIRECTORY
+    - cd $DEFAULT_WORKING_DIRECTORY/container
     - npm install
     - npm run build
     - aws s3 sync dist s3://${AWS_S3_BUCKET_NAME}/container/latest
@@ -25,4 +25,23 @@ build-job:
   rules:
     - changes:
         - packages/container/**
+    - if: $CI_COMMIT_REF_NAME == "master"
+
+build-marketing-job:
+  stage: build
+  script:
+    - apt-get update -qy
+    - apt-get install -y nodejs npm awscli
+    - cd $DEFAULT_WORKING_DIRECTORY/marketing
+    - npm install
+    - npm run build
+    - aws s3 sync dist s3://${AWS_S3_BUCKET_NAME}/marketing/latest
+      --region us-east-1
+    - aws cloudfront create-invalidation
+      --distribution-id $AWS_DISTRIBUTION_ID
+      --paths "/marketing/latest/index.html"
+      --region us-east-1
+  rules:
+    - changes:
+        - packages/marketing/**
     - if: $CI_COMMIT_REF_NAME == "master"
