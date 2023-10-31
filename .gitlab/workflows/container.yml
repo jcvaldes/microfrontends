@@ -26,3 +26,4 @@ build:
   rules:
     - changes:
         - packages/container/**
+    - if: $CI_COMMIT_REF_NAME == "master"
