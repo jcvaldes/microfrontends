@@ -25,5 +25,5 @@ build-job:
     - echo $CI_COMMIT_REF_NAME
   rules:
     - changes:
-        - ./packages/container/**/*
+        - ./packages/container/*
     - if: $CI_COMMIT_REF_NAME == "master"
