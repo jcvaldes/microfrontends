@@ -24,7 +24,7 @@ build-job:
       --region us-east-1
   rules:
     - if: $CI_COMMIT_REF_NAME == "master"
- only:
+  only:
     - master
   except:
     changes:
