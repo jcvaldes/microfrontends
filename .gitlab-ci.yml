@@ -70,6 +70,7 @@ build-marketing-job:
       changes:
         paths:
           - packages/marketing/**/*
+
 build-dashboard-job:
   stage: build
   script:
