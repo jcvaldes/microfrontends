@@ -49,3 +49,44 @@ build-auth-job:
       changes:
         paths:
           - packages/auth/**/*
+
+build-marketing-job:
+  stage: build
+  script:
+    - apt-get update -qy
+    - apt-get install -y nodejs npm awscli
+    - cd $DEFAULT_WORKING_DIRECTORY/marketing
+    - npm install
+    - npm run build
+    - aws s3 sync dist s3://${AWS_S3_BUCKET_NAME}/marketing/latest
+      --region us-east-1
+    - aws cloudfront create-invalidation
+      --distribution-id $AWS_DISTRIBUTION_ID
+      --paths "/marketing/latest/index.html"
+      --region us-east-1
+    - echo $CI_COMMIT_REF_NAME
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "master"
+      changes:
+        paths:
+          - packages/marketing/**/*
+build-dashboard-job:
+  stage: build
+  script:
+    - apt-get update -qy
+    - apt-get install -y nodejs npm awscli
+    - cd $DEFAULT_WORKING_DIRECTORY/dashboard
+    - npm install
+    - npm run build
+    - aws s3 sync dist s3://${AWS_S3_BUCKET_NAME}/dashboard/latest
+      --region us-east-1
+    - aws cloudfront create-invalidation
+      --distribution-id $AWS_DISTRIBUTION_ID
+      --paths "/dashboard/latest/index.html"
+      --region us-east-1
+    - echo $CI_COMMIT_REF_NAME
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "master"
+      changes:
+        paths:
+          - packages/dashboard/**/*
