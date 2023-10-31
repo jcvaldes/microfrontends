@@ -24,6 +24,5 @@ build-job:
       --region us-east-1
   rules:
     - changes:
-        - ./packages/container/**/*
-    - when: always
+        - packages/container/**
     - if: $CI_COMMIT_REF_NAME == "master"
