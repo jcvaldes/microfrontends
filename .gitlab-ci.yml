@@ -12,7 +12,7 @@ build-job:
   stage: build
   script:
     - apt-get update -qy
-    - apt-get install -y nodejs npm
+    - apt-get install -y nodejs npm awscli
     - cd $DEFAULT_WORKING_DIRECTORY
     - npm install
     - npm run build
