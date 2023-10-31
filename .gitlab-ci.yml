@@ -10,7 +10,6 @@ variables:
 
 build-job:
   stage: build
-
   script:
     - apt-get update -qy
     - apt-get install -y nodejs npm awscli
@@ -23,11 +22,8 @@ build-job:
       --distribution-id $AWS_DISTRIBUTION_ID
       --paths "/container/latest/index.html"
       --region us-east-1
-<<<<<<< HEAD
-=======
   rules:
     - changes:
         - packages/container/**/*
     - when: always
     - if: $CI_COMMIT_REF_NAME == "master"
->>>>>>> 3386ef2bf9a6805f35995d212338621e63e659c1
