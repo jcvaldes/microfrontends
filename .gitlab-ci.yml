@@ -5,8 +5,6 @@ build-job:
   stage: build
   script:
     - echo "Testing container"
-  only:
-    - master
   rules:
     - changes:
         - packages/container/**
