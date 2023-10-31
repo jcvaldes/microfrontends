@@ -24,5 +24,5 @@ build-job:
       --region us-east-1
   only:
     - paths:
-        - '^packages/.*'
+        - '^packages/container/.*'
     - if: $CI_COMMIT_REF_NAME == "master"
