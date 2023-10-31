@@ -22,6 +22,8 @@ build-job:
       --distribution-id $AWS_DISTRIBUTION_ID
       --paths "/container/latest/index.html"
       --region us-east-1
-  except:
-    changes:
-      - 'packages/container/**'
+  rules:
+    - changes:
+        - packages/container/**/*
+    - when: always
+    - if: $CI_COMMIT_REF_NAME == "master"
