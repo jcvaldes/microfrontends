@@ -23,7 +23,6 @@ build-job:
       --paths "/container/latest/index.html"
       --region us-east-1
   only:
-    - changes:
-        - packages/container/**/*
-
+    - paths:
+        - '^packages/.*'
     - if: $CI_COMMIT_REF_NAME == "master"
