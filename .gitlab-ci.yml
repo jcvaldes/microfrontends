@@ -10,9 +10,6 @@ variables:
 
 build-job:
   stage: build
-  only:
-    - paths:
-        - packages/container/**/*
 
   script:
     - apt-get update -qy
