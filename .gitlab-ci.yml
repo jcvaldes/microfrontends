@@ -26,6 +26,3 @@ build-job:
     - if: $CI_COMMIT_REF_NAME == "master"
   only:
     - master
-  except:
-    changes:
-      - 'packages/container/**'
