@@ -25,5 +25,5 @@ build-job:
   rules:
     - changes:
         - ./packages/container/**/*
-    - when: always
+    - when: never
     - if: $CI_COMMIT_REF_NAME == "master"
