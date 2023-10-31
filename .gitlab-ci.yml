@@ -1,5 +1,13 @@
 stages:
   - build
 
-include:
-  - local: .gitlab/workflows/container.yml
+build-job:
+  stage: build
+  script:
+    - echo "Testing container"
+  only:
+    - master
+  rules:
+    - changes:
+        - packages/container/**
+    - if: $CI_COMMIT_REF_NAME == "master"
