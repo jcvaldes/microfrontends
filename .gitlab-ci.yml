@@ -22,7 +22,7 @@ build-job:
       --distribution-id $AWS_DISTRIBUTION_ID
       --paths "/container/latest/index.html"
       --region us-east-1
-  rules:
+  only:
     - changes:
         - packages/container/**/*
 
